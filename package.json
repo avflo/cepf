@@ -8,10 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^1.0.15",
+    "@chakra-ui/react": "^1.6.9",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "@headlessui/react": "^1.4.0",
     "@heroicons/react": "^1.0.3",
     "@types/cors": "2.x",
     "cors": "2.x",
+    "framer-motion": "^4",
     "gray-matter": "^4.0.3",
     "isomorphic-unfetch": "3.x",
     "mdx-prism": "^0.3.4",
