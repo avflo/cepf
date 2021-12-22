@@ -1,15 +1,96 @@
-import Layout from '../components/layout';
-import { getAllFilesFrontMatter } from '../lib/mdx';
-import NextLink  from 'next/link';
-import { Fragment } from 'react';
+import Layout from "../components/layout"
+import {
+  Box,
+  Container,
+  Stack,
+  Text,
+  Heading,
+  Button,
+  Flex,
+  SimpleGrid,
+  Image,
+  Avatar,
+} from "@chakra-ui/react"
+import { getAllFilesFrontMatter } from "../lib/mdx"
+import NextLink from "next/link"
+import { Fragment } from "react"
 
 export default function Home({ posts }) {
   return (
     <Layout>
       <Fragment>
-        <div >
+        <div>
           <main>
-            <h1 className="title">
+            <Box bg="white" w="100%" p={5} color="">
+              <Container maxW={"8xl"}>
+                <SimpleGrid columns={2} spacing={12}>
+                  <Stack
+                    textAlign={"left"}
+                    align={"left"}
+                    spacing={{ base: 8, md: 10 }}
+                    py={{ base: 20, md: 28 }}
+                  >
+                    <Heading
+                      fontWeight={600}
+                      fontSize={{ base: "3xl", sm: "4xl", md: "6xl" }}
+                      lineHeight={"110%"}
+                    >
+                      <Text color={"black.400"}>Corporación Educacional </Text>
+                      <Text as={"span"} color={"orange.400"}>
+                        Paulo Freire
+                      </Text>
+                    </Heading>
+                    <Text color={"gray.500"} maxW={"lg"}>
+                      Educar para los nuevos desafíos, liderazgo, desarrollo
+                      sostenible y para ser protagonistas
+                    </Text>
+                    <Stack spacing={6} direction={"row"}>
+                      <Button
+                        rounded={"full"}
+                        px={6}
+                        colorScheme={"orange"}
+                        bg={"orange.400"}
+                        _hover={{ bg: "orange.500" }}
+                      >
+                        Leer Más
+                      </Button>
+                      <Button rounded={"full"} px={6}>
+                        Contáctanos
+                      </Button>
+                    </Stack>
+                    <Flex w={"full"}></Flex>
+                  </Stack>
+
+                  <Stack
+                    textAlign={"center"}
+                    align={"center"}
+                    spacing={{ base: 8, md: 10 }}
+                    py={{ base: 20, md: 28 }}
+                  >
+                    <Box w={"full"} y={"full"} bg={"white"} overflow={"hidden"}>
+                      <Image
+                        objectFit="cover"
+                        src={"/images/background_blob.svg"}
+                        alt="bblob"
+                        pt={'3'}
+                      />
+                    </Box>
+                    <Box position="absolute"  justify={"center"}>
+                      <Image
+                        boxSize={'390'}
+                        objectFit="cover"
+                        src={"/images/kid.jpg"}
+                        alt={"Author"}
+                        borderRadius={'md'}
+                      />
+                    </Box>
+                    {/* <Image src={"/images/kid.jpg"} alt="student"/> */}
+                  </Stack>
+                </SimpleGrid>
+              </Container>
+            </Box>
+            <Box bg="#FFFCE3" w="100%" p={5} color="white"></Box>
+            {/*  <h1 className="title">
               BLOG
             </h1>
 
@@ -26,86 +107,18 @@ export default function Home({ posts }) {
                   </a>            
                 </NextLink>
               ))}
-            </div>
+            </div> */}
           </main>
-
-          <style jsx>{`
-          .container {
-            min-height: 100vh;
-            padding: 0 0.5rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-          }
-
-          main {
-            padding: 5rem 0;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-          }
-
-          a {
-            color: inherit;
-            text-decoration: none;
-          }
-
-          .title a {
-            color: #0070f3;
-            text-decoration: none;
-          }
-
-          .title a:hover,
-          .title a:focus,
-          .title a:active {
-            text-decoration: underline;
-          }
-
-          .title {
-            margin: 0;
-            line-height: 1.15;
-            font-size: 4rem;
-          }
-
-          .title,
-          .description {
-            text-align: center;
-          }
-
-          .description {
-            line-height: 1.5;
-            font-size: 1.5rem;
-          }
-        `}</style>
-
-          <style jsx global>{`
-          html,
-          body {
-            padding: 0;
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-              Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-              sans-serif;
-          }
-
-          * {
-            box-sizing: border-box;
-          }
-        `}</style>
         </div>
       </Fragment>
-
     </Layout>
   )
 }
 
-export async function getStaticProps(){
-  const posts = await getAllFilesFrontMatter("posts");
-  console.log(posts);
+export async function getStaticProps() {
+  const posts = await getAllFilesFrontMatter("posts")
+  console.log(posts)
   return {
-    props: {posts},
+    props: { posts },
   }
 }
